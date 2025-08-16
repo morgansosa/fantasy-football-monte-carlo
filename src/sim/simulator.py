@@ -13,6 +13,20 @@ class SeasonResult:
 def _simulate_week_scores(teams: List[TeamConfig], rng: np.random.Generator) -> Dict[str, float]:
     return {t.name: float(rng.normal(t.mean, t.std)) for t in teams}
 
+def simulate_matchup(a, b, scores, rng):
+    sa, sb = scores[a], scores[b]
+    if sa > sb: return a
+    if sb > sa: return b
+    return a if rng.random() < 0.5 else b
+
+def simulate_week(teams, week_pairs, rng):
+    scores = _simulate_week_scores(teams, rng)
+    results = []
+    for a, b in week_pairs:
+        winner = simulate_matchup(a, b, scores, rng)
+        results.append((a, b, winner, scores[a], scores[b]))
+    return results
+
 def _round_robin_schedule(team_names: List[str], weeks: int, rng: np.random.Generator) -> List[List[Tuple[str, str]]]:
     pairings = []
     for _ in range(weeks):
@@ -28,15 +42,11 @@ def simulate_season(config: LeagueConfig, seed: int | None = None) -> SeasonResu
     wins = {t: 0 for t in team_names}
     points_for = {t: 0.0 for t in team_names}
     for week_pairs in schedule:
-        scores = _simulate_week_scores(config.teams, rng)
-        for a,b in week_pairs:
-            sa,sb = scores[a], scores[b]
-            points_for[a]+=sa; points_for[b]+=sb
-            if sa>sb: wins[a]+=1
-            elif sb>sa: wins[b]+=1
-            else:
-                if rng.random()<0.5: wins[a]+=1
-                else: wins[b]+=1
+        week_results = simulate_week(config.teams, week_pairs, rng)
+        for a,b, winner, sa, sb in week_results:
+            points_for[a]+=sa
+            points_for[b]+=sb
+            wins[winner]+=1
     max_wins = max(wins.values())
     cands = [t for t,w in wins.items() if w==max_wins]
     if len(cands)==1: champ=cands[0]
