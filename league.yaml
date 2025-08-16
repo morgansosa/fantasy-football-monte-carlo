@@ -1,4 +1,5 @@
 weeks: 14
+scoring_rules: scoring.yaml
 teams:
   - {name: "Alpha", mean: 120.0, std: 15.0}
   - {name: "Bravo", mean: 115.0, std: 18.0}

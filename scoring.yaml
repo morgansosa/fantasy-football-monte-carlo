@@ -1,0 +1,15 @@
+pass_yd: 0.04
+pass_td: 4
+interception: -2
+rush_yd: 0.10
+rush_td: 6
+rec: 1
+rec_yd: 0.10
+rec_td: 6
+fumble: -2
+k_fg: 3
+k_xp: 1
+dst_td: 6
+dst_int: 2
+dst_sack: 1
+
