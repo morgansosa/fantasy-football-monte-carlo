@@ -7,4 +7,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src ./src
 ENV PYTHONPATH=/app/src
 COPY league.yaml ./league.yaml
+COPY scoring.yaml ./scoring.yaml
 ENTRYPOINT ["python","-m","sim.cli"]
