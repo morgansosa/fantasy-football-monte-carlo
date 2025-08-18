@@ -1,6 +1,11 @@
 from dataclasses import dataclass
-from typing import List, Optional, Dict, Any
-import yaml, os
+from typing import List
+from typing import Optional
+from typing import Dict
+from typing import Any
+import yaml
+import os
+
 
 @dataclass
 class TeamConfig:
@@ -8,11 +13,13 @@ class TeamConfig:
     mean: float
     std: float
 
+
 @dataclass
 class LeagueConfig:
     teams: List[TeamConfig]
     weeks: int
     scoring_rules: Optional[Dict[str, Any]] = None
+
 
 def load_config(path: str) -> LeagueConfig:
     with open(path, "r") as f:
