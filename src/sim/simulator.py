@@ -1,8 +1,11 @@
 from dataclasses import dataclass
-from typing import Dict, List, Tuple
+from typing import Dict
+from typing import List
+from typing import Tuple
 import numpy as np
 import pandas as pd
-from .config import LeagueConfig, TeamConfig
+from .config import LeagueConfig
+from .config import TeamConfig
 
 
 @dataclass

@@ -1,6 +1,10 @@
-from sim.config import LeagueConfig, TeamConfig, load_config
-from sim.simulator import simulate_many, simulate_matchup
-import yaml, textwrap
+from sim.config import LeagueConfig
+from sim.config import TeamConfig
+from sim.config import load_config
+from sim.simulator import simulate_many
+from sim.simulator import simulate_matchup
+import yaml
+import textwrap
 
 
 def make_cfg():

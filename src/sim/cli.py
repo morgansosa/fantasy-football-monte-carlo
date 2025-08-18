@@ -1,4 +1,5 @@
-import os, click
+import os
+import click
 from .config import load_config
 from .simulator import simulate_many
 from .data import write_sample_config

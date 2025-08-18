@@ -1,6 +1,10 @@
 from dataclasses import dataclass
-from typing import List, Optional, Dict, Any
-import yaml, os
+from typing import List
+from typing import Optional
+from typing import Dict
+from typing import Any
+import yaml
+import os
 
 
 @dataclass
