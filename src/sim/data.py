@@ -10,6 +10,7 @@ teams:
   - {name: "Hotel", mean: 113.0, std: 17.0}
 """
 
+
 def write_sample_config(path: str):
     with open(path, "w") as f:
         f.write(SAMPLE_CONFIG)
